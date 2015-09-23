@@ -4,5 +4,7 @@ saveRDS(gbm.mod, file="data/gbm.rds")
 summary(gbm.mod)
 varImp(gbm.mod)
 
-predictions <- predict(gbm.mod, newdata=testing)
-confusionMatrix(predictions, testing$class)
+gbm.mod <- readRDS(file="data/gbm.rds")
+
+gbm.predictions <- predict(gbm.mod, newdata=testing)
+confusionMatrix(gbm.predictions, testing$class)

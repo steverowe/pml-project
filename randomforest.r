@@ -5,8 +5,11 @@ saveRDS(rf.mod, file="data/randomforest.rds")
 summary(rf.mod)
 varImp(rf.mod)
 
-predictions <- predict(rf.mod, newdata=testing)
-confusionMatrix(predictions, testing$class)
+rf.mod <- readRDS(file="data/randomforest.rds")
+
+rf.predictions <- predict(rf.mod, newdata=testing)
+rf.cm <- confusionMatrix(rf.predictions, testing$class)
 
 probs <- predict(rf.mod, newdata=testing, type="prob")
+
 
